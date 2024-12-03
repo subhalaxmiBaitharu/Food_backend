@@ -1,11 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const Photos = require("../schemas/photo.schema");
-const { isLoggedIn } = require("../middleware/auth");
 const env = require("dotenv");
 env.config();
 
-router.get('/getPhotos',isLoggedIn, (req, res) => {
+router.get('/getPhotos', (req, res) => {
     try{
         Photos.find({}).then(data => {
             console.log(data);
@@ -19,7 +18,7 @@ router.get('/getPhotos',isLoggedIn, (req, res) => {
 })
 
 
-router.get('/getLoginPhoto',isLoggedIn, async (req, res) => {
+router.get('/getLoginPhoto', async (req, res) => {
   try {
     const photo = await Photos.findOne({ name: 'login photo' });
 
