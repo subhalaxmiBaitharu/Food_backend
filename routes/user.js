@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 const env = require("dotenv");
 env.config();
 
-router.get("/:id",isLoggedIn, async (req, res) => {
+router.get("/:id", async (req, res) => {
     try {
         const { id } = req.params;
 
